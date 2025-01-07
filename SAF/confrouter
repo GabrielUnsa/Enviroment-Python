@@ -1,0 +1,90 @@
+Router GB
+
+enable
+configure terminal
+ip dhcp excluded-address 192.168.2.1 192.168.2.15
+ip dhcp excluded-address 192.168.6.1 192.168.6.10
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 192.168.12.1 192.168.12.10
+ip dhcp excluded-address 192.168.13.1 192.168.13.10
+ip dhcp excluded-address 192.168.14.1 192.168.14.10
+ip dhcp excluded-address 192.168.15.1 192.168.15.10
+ip dhcp excluded-address 192.168.19.1 192.168.19.10
+
+ip dhcp pool servicioPenitenciario
+network 192.168.6.0 255.255.255.0
+default-router 192.168.6.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit
+
+ip dhcp pool senadores
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit
+
+ip dhcp pool poderJudicial
+network 192.168.12.0 255.255.255.0
+default-router 192.168.12.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit
+
+ip dhcp pool auditoria
+network 192.168.13.0 255.255.255.0
+default-router 192.168.13.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit
+
+ip dhcp pool ministerioPublico
+network 192.168.14.0 255.255.255.0
+default-router 192.168.14.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit
+
+ip dhcp pool policia
+network 192.168.15.0 255.255.255.0
+default-router 192.168.15.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit
+
+ip dhcp pool derechos
+network 192.168.19.0 255.255.255.0
+default-router 192.168.19.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit
+write
+
+
+SubRed Router
+enable
+configure terminal
+interface FastEthernet 1/0
+ip helper-address 192.168.255.1
+end
+
+
+
+enable
+configure terminal
+ip dhcp excluded-address 192.168.255.1 192.168.255.50
+ip dhcp pool grandBourg
+network 192.168.255.0 255.255.255.0
+default-router 192.168.255.1
+domain-name gobsalta.gov.ar
+dns-server 192.168.2.84
+dns-server 192.168.2.85
+exit

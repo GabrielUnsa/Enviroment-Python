@@ -1,0 +1,50 @@
+							Configuracion estandar para linux
+Instalacion PHP y PHPMyAdmin
+apt-get update -y
+apt-get install php -y
+apt-get install apache2 -y
+apt-get install mysql-server -y
+apt-get install phpmyadmin php-mbstring php-zip php-gd php-json php-curl -y
+nano /etc/apache2/apache2.conf
+	Include /etc/phpmyadmin/apache.conf
+/etc/init.d/apache2 restart
+dpkg-reconfigure phpmyadmin
+nano /etc/php/7.4/apache2/php.ini
+phpenmod mbstring
+mysql -u root
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123';
+	GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+	SELECT user, authentication_string, plugin, host FROM mysql.user;
+
+Instalacion de Programas Basicos
+apt-get install texlive-base -y
+apt-get install texlive-full -y
+apt-get install texstudio -y
+apt-get install git -y
+apt-get install curl -y
+apt-get install unrar -y
+apt-get install nodejs -y
+apt-get install npm -y
+apt-get install xclip -y
+apt-get install xsel -y
+add-apt-repository ppa:mikhailnov/pulseeffects
+apt-get update
+apt-get install pulseeffects
+wget https://launchpad.net/~yunnxx/+archive/ubuntu/gnome3/+files/pulseeffects_1.313entornosgnulinuxenial-1ubuntu1_amd64.deb -O pulse-effects-64bit.deb
+dpkg -i pulse-effects-64bit.deb
+apt-get install -f
+apt-get install python3-neovim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+Configurando GIT
+ssh-keygen -t rsa -b 4096 -C "gab24wal@gmail.com"
+ssh-add ~/.ssh/id_rsa
+xclip -sel clip < ~/.ssh/id_rsa.pub
+git config --global user.name "GabrielUnsa"
+git config --global user.email gab24wal@gmail.com
+
+Configurando NeoVim
+cd ~/.config
+mkdir nvim
+nvim init.vim
+
